@@ -1,7 +1,7 @@
 # Portfolio → NewBoy 内容迁移计划（设计稿）
 
-> 状态：首发内容已实施并完成本地验证。目标：把 `coding-workspace/portfolio` 里已写好的
-> Work / Research 内容，无缝整合进 `coding-workspace/newboy`（NewBoy 复古桌面）。
+> 状态：首发内容已实施并完成本地验证。目标：把 `web-workspace/portfolio` 里已写好的
+> Work / Research 内容，无缝整合进 `web-workspace/newboy`（NewBoy 复古桌面）。
 > 本文只做方案，不动代码。
 
 ## 1. 背景与目标
