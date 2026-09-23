@@ -47,7 +47,7 @@ Stable architecture, setup, module responsibilities, i18n design, operational co
 
 1. Have Copilot independently review the NB-004 and NB-005 diff using `docs/handoffs/NB-005.md`.
 2. Resolve review findings, then obtain Yanfei's explicit authorization for commit and push.
-3. Deployment has already taken place: the frontend is on Vercel and the API on Render (service `newboy-api`, Frankfurt, `plan: free`), verified reachable on 2026-09-23. `NB-006` and `NB-007` are still marked `blocked` in `TASKS.md`; reconcile their status with Yanfei rather than assuming they are open or done.
+3. Deployment has already taken place: the frontend is on Vercel and the API on Render (service `newboy-api`, Frankfurt, `plan: free`), verified reachable on 2026-09-23. `NB-006` and `NB-007` are now `review`, not `blocked`; `NB-010` owns writing the release record (provider URLs, release SHA, check results, known limitations) and closing them.
 4. The Render free plan sleeps after 15 idle minutes (about one minute to wake). Decide whether public production should move to always-on compute.
 
 ## Blockers and decisions required
