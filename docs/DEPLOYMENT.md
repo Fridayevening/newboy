@@ -1,5 +1,7 @@
 # NewBoy Deployment Runbook
 
+> **Status (2026-09-23):** the first release has already taken place. Frontend on Vercel (<https://newboy-portfolio.vercel.app/>); API on Render as service `newboy-api`, Frankfurt, `plan: free`, automatic deploys off; reachability verified 2026-09-23. The topology, environment matrix, staging checks and rollback sections below remain the operating reference. Still open: whether production should leave the free plan, and whether owner uploads need durable storage.
+
 This runbook prepares deployment but does not authorize account creation, billing, secret entry, commits, pushes or releases. Yanfei remains the integration and release owner.
 
 ## Selected topology

@@ -4,13 +4,13 @@
 
 ## Snapshot
 
-- Updated: 2026-09-17
-- Updated by: Codex
+- Updated: 2026-09-23
+- Updated by: Copilot (documentation correction authorized by Yanfei)
 - Base commit: `52193df`
 - Working tree at start: clean
 - Repository: `Fridayevening/newboy` (public) — renamed from `Fridayevening/portfolio` on 2026-09-19
 - Default branch: `main`
-- Deployment: production preparation active; no external environment created
+- Deployment: **live** — frontend on Vercel (<https://newboy-portfolio.vercel.app/>), API on Render as service `newboy-api` (Frankfurt, `plan: free`, `autoDeployTrigger: off`). Reachability verified 2026-09-23. `docs/DEPLOYMENT.md` remains the reference for environment variables, staging checks and rollback.
 
 The working tree may contain the uncommitted collaboration-document changes described under **Awaiting review**. Run `git status --short` and inspect the diff instead of assuming this snapshot is current.
 
@@ -47,8 +47,8 @@ Stable architecture, setup, module responsibilities, i18n design, operational co
 
 1. Have Copilot independently review the NB-004 and NB-005 diff using `docs/handoffs/NB-005.md`.
 2. Resolve review findings, then obtain Yanfei's explicit authorization for commit and push.
-3. Select or confirm provider accounts and billing, then deploy and verify staging under `NB-006`.
-4. Release production under `NB-007` only after Yanfei accepts staging and approves the release action.
+3. Deployment has already taken place: the frontend is on Vercel and the API on Render (service `newboy-api`, Frankfurt, `plan: free`), verified reachable on 2026-09-23. `NB-006` and `NB-007` are still marked `blocked` in `TASKS.md`; reconcile their status with Yanfei rather than assuming they are open or done.
+4. The Render free plan sleeps after 15 idle minutes (about one minute to wake). Decide whether public production should move to always-on compute.
 
 ## Blockers and decisions required
 

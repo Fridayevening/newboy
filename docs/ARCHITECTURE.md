@@ -118,7 +118,7 @@ Chinese-only news is filtered from English editions. Curated bilingual news sele
 
 ## Deployment outline
 
-Production preparation is implemented; no external environment has been created. The selected topology is:
+The first release is live: the frontend is on Vercel and the API on Render as service `newboy-api` (Frankfurt, `plan: free`, automatic deploys disabled), verified reachable on 2026-09-23. The selected topology is:
 
 1. Vercel hosts the Next.js frontend from `frontend/`.
 2. Render hosts the NestJS API from `server/Dockerfile`; automatic deploys are disabled.
