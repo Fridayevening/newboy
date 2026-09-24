@@ -4,3 +4,6 @@ Archive.zip
 
 # macOS
 .DS_Store
+
+# Obsidian vault 配置：软件自动生成，每次开合都变，不是内容。
+.obsidian/
