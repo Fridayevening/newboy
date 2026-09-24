@@ -15,7 +15,7 @@ Only `approved` entries may be copied into production content data. Evidence not
 
 1. Yanfei's explicit confirmation.
 2. The Career Workspace verified facts and Story Bank.
-3. Reviewable source files under `01Datesource/`.
+3. Reviewable source files under `01WorkExperience/`.
 4. Existing portfolio copy, which is a draft rather than evidence.
 
 When sources disagree, publication stops until the conflict is resolved. Historical website copy never overrides a corrected fact.

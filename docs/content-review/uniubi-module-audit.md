@@ -27,7 +27,7 @@ The source supports a broad enterprise-administration platform, but it does not 
 
 Source:
 
-- `01Datesource/03Work-UniUbi/海外/操作和宣传/海外业务功能清单.xlsx`, sheet `Sheet1`, section `UstarCloud功能列表`.
+- `01WorkExperience/UniUbi/海外/操作和宣传/海外业务功能清单.xlsx`, sheet `Sheet1`, section `UstarCloud功能列表`.
 
 ## UstarMobile
 
@@ -43,7 +43,7 @@ The V2 requirements list records these main user areas:
 
 Source:
 
-- `01Datesource/03Work-UniUbi/海外/APP/Mobile/APP_V2.0.0_需求list_20210806.xlsx`, sheet `Sheet1`.
+- `01WorkExperience/UniUbi/海外/APP/Mobile/APP_V2.0.0_需求list_20210806.xlsx`, sheet `Sheet1`.
 
 ## UstarAccess
 
@@ -58,7 +58,7 @@ Visitor functionality and reminder notifications are marked as recommendations t
 
 Source:
 
-- `01Datesource/03Work-UniUbi/海外/APP/Access/UA V3.0.0/UstarAccess_V2.0.0_需求list_20220519.xlsx`, sheet `Sheet1`.
+- `01WorkExperience/UniUbi/海外/APP/Access/UA V3.0.0/UstarAccess_V2.0.0_需求list_20220519.xlsx`, sheet `Sheet1`.
 
 ## Publication decision
 
