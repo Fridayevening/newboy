@@ -17,7 +17,7 @@ Yanfei is the default integration owner. A task may name another integration own
 | NB-007 | Release and verify production | Yanfei (integration) | review | Production hosting, domain, environment and release record | — |
 | NB-008 | Restore full Work and Research narratives with corrected facts | Codex | review | `docs/content-review/**`, `frontend/src/components/desktop/portfolioContent.ts`, Work/Research presentation files and relevant tests | `521be15` |
 | NB-009 | Synchronise approved Work and Research content to the archived portfolio | Codex | review | Read-only NewBoy content; old portfolio Work/Research data and presentation files; task handoff | `31a8507` |
-| NB-010 | Record the release evidence and close NB-006/NB-007 | Yanfei (integration) | ready | `HANDOFF.md` release record only; no code or configuration | — |
+| NB-010 | Record the release evidence and close NB-006/NB-007 | Yanfei (integration) | review | `HANDOFF.md` release record only; no code or configuration | — |
 
 ## Dependency order
 
@@ -29,9 +29,9 @@ Yanfei is the default integration owner. A task may name another integration own
 
 - `NB-004` unblocks only when the release content is explicitly marked `approved`.
 - `NB-005` starts after the local Work and Research experience passes its quality gates.
-- `NB-006` requires provider selection and Yanfei's approval for any account, billing, secret or exter
+- `NB-006` requires provider selection and Yanfei's approval for any account, billing, secret or external service.
 
-`NB-006` and `NB-007` moved from `blocked` to `review` on 2026-09-23. The first release is live (Vercel frontend, Render service `newboy-api` in Frankfurt, reachability verified on 2026-09-23), but the staging and production checklists in `docs/DEPLOYMENT.md` were never recorded as run. `NB-010` covers writing that release record — provider URLs, release SHA, dates, check results and known limitations — as required by the runbook's production-release step 7. **`NB-006` and `NB-007` may be marked `done` only after `NB-010` lands.**nal-state change.
+`NB-006` and `NB-007` moved from `blocked` to `review` on 2026-09-23. The first release is live (Vercel frontend, Render service `newboy-api` in Frankfurt, reachability verified on 2026-09-23), but the staging and production checklists in `docs/DEPLOYMENT.md` were never recorded as run. `NB-010` covers writing that release record — provider URLs, release SHA, dates, check results and known limitations — as required by the runbook's production-release step 7. **`NB-006` and `NB-007` may be marked `done` only after `NB-010` lands.**
 - `NB-007` requires Yanfei's acceptance of the staging build and explicit production-release approval.
 
 ## Status values
