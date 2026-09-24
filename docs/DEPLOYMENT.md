@@ -64,8 +64,8 @@ Do not expose `OWNER_TOKEN`, database credentials or AI keys through `NEXT_PUBLI
 - Both approved Figma links open the intended public prototypes.
 - `/v1/health` succeeds over HTTPS.
 - Frontend mode becomes live when the API is available and falls back honestly when it is unavailable.
-- Market and news failures retain the previous valid value and never invent replacements.
-- Market SSE stays connected for at least ten minutes.
+- Market and news failures retain the previous valid value and never invent replacements. **News: verified 2026-09-24. Market: not applicable as written** — the server-side feed never reaches live in production, so this path never runs. See `docs/handoffs/NB-010.md`.
+- Market SSE stays connected for at least ten minutes. **Not applicable (2026-09-24)** — the stream answers 200 with the right content type and then sends nothing, so the frontend falls back to its local simulation. See `NB-010.md`.
 - Owner unlock rejects an incorrect token and accepts the real token only when Yanfei tests it privately.
 - Hotaru ping reports its Python dependencies; one small image completes successfully.
 - Laser Lab reports Blender unavailable without crashing the API or the rest of the site.

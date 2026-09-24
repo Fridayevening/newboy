@@ -13,7 +13,17 @@ export interface ConnState {
   status: ConnStatus;
 }
 
-const PROBE_TIMEOUT_MS = 3000;
+// The probe's whole job is to wait for the server, so it has to outlast a Render
+// free-plan cold start: 24.5 s measured on 2026-09-24, after the 15-minute idle
+// sleep. At the original 3000 ms it gave up long before the server could answer,
+// which put every visitor arriving after idle into LOCAL mode — no file system,
+// no news, and the simulated market engine instead of the real feed.
+//
+// Nothing else has to survive the cold start: the components all gate on
+// `conn.status === "live"` before they fetch, so this probe is the single gate.
+//
+// A timeout is a ceiling, not a delay, so a warm server still resolves in ~2 s.
+const PROBE_TIMEOUT_MS = 45_000;
 const REPROBE_MS = 90_000;
 
 const listeners = new Set<() => void>();
