@@ -58,19 +58,28 @@ Do not expose `OWNER_TOKEN`, database credentials or AI keys through `NEXT_PUBLI
 
 ## Staging checks
 
-- `/` renders in English in a clean browser profile.
+> The four checks below that need a browser, plus the engine label and the console
+> sweep, are automated in `docs/uat/deployed-uat.mjs`. It drives the system Chrome
+> through puppeteer-core against the deployed site, so it tests production rather
+> than a preview — read it as a proxy for a staging run, not a substitute for one.
+> It takes roughly six minutes and needs `npm i puppeteer-core` in a scratch directory.
+> Its header records the site-specific traps (the alert toast is the only route to the
+> market window; synthetic `.click()` does not drive these handlers; the desktop boots
+> behind a sequence, so wait for the taskbar rather than sleeping).
+
+- `/` renders in English in a clean browser profile. **Verified 2026-09-24** — `html lang="en"`, all four desktop labels English, no Chinese present, in a fresh profile.
 - Work shows four approved cases; Research shows two approved studies.
-- Switching to Chinese updates desktop labels, open content, title bars and taskbar entries; refresh preserves the selection.
+- Switching to Chinese updates desktop labels, open content, title bars and taskbar entries; refresh preserves the selection. **Verified 2026-09-24** — the open Settings window's title bar switches to `系统设置 - SETTINGS.EXE`, desktop labels and the taskbar follow, and a reload leaves `html lang="zh-CN"` with the labels still Chinese. The preference is a cookie read server-side in `layout.tsx`, so the reload half is a real check of the server.
 - Both approved Figma links open the intended public prototypes.
 - `/v1/health` succeeds over HTTPS.
-- Frontend mode becomes live when the API is available and falls back honestly when it is unavailable.
-- Market and news failures retain the previous valid value and never invent replacements. **News: verified 2026-09-24. Market: not applicable as written** — the server-side feed never reaches live in production, so this path never runs. See `docs/handoffs/NB-010.md`.
-- Market SSE stays connected for at least ten minutes. **Not applicable (2026-09-24)** — the stream answers 200 with the right content type and then sends nothing, so the frontend falls back to its local simulation. See `NB-010.md`.
-- Owner unlock rejects an incorrect token and accepts the real token only when Yanfei tests it privately.
-- Hotaru ping reports its Python dependencies; one small image completes successfully.
+- Frontend mode becomes live when the API is available and falls back honestly when it is unavailable. **Verified 2026-09-24** — with the API up the market window's status bar reads `Source Live`; with the API origin blocked it reads `Source Local` and the newspaper shows an `EST. 2000` placeholder rather than today's date. Note that `Source Live` means the API answered the probe, not that the feed has rows: see the market entries below.
+- Market and news failures retain the previous valid value and never invent replacements. **Partly superseded (2026-09-24 evening).** News: verified. Market: the earlier "not applicable" annotation was wrong — the feed is **intermittent**, not dead. `GET /v1/market/quotes` was measured serving 16 symbols at 08:44 and an empty list at 09:17 on the same day, and the browser showed `Source Live` with a real quote between those times. So this path does run. Whether an empty-but-successful response invents anything is **not yet tested**, because it needs the feed to fail while the API answers. See `docs/handoffs/NB-010.md`.
+- Market SSE stays connected for at least ten minutes. **Not met (2026-09-24)** — the stream answers `200` with `content-type: text/event-stream`, sends `retry: 3000` and one `snapshot`, and then nothing: 108 bytes over a 20 s sample. That sample was taken at 09:17, twenty minutes after the quotes endpoint had served 16 live symbols, so the stream is failing while the feed works — the two do not fail together and the frontend is not the reason. A ten-minute connected check has **not** been run.
+- Owner unlock rejects an incorrect token and accepts the real token only when Yanfei tests it privately. **Rejection verified.** The acceptance half cannot be completed from outside: the value in `server/.env` returns `401` with a body byte-identical to a deliberately wrong token, so production uses a different secret held only in the Render dashboard. **This check is Yanfei's to tick.**
+- Hotaru ping reports its Python dependencies; one small image completes successfully. **Ping verified.** Image: `POST /v1/hotaru/image` with a 48×48 PNG returns `200` and a 5259-byte processed PNG in 4.6 s, and the controller removes its work directory in a `finally` block, so the run leaves nothing behind. The window's own file picker was **not** reached — double-clicking the `HypeBoyImgTool` desktop icon produced no file input. The pipeline is proven; the wiring into that window is not.
 - Laser Lab reports Blender unavailable without crashing the API or the rest of the site.
-- Browser console contains no NewBoy application errors. Extension-injected errors are recorded separately.
-- Check at desktop, 800×600 and a narrow mobile viewport.
+- Browser console contains no NewBoy application errors. Extension-injected errors are recorded separately. **Verified 2026-09-24** — 0 `console.error`, 0 uncaught exceptions, 0 HTTP 4xx/5xx. The one failed request is `media/lemon&wolf.mp3` as `ERR_ABORTED`: the Media Player's audio, cancelled because headless Chrome refuses to autoplay without a user gesture. That is not an application error.
+- Check at desktop, 800×600 and a narrow mobile viewport. **Verified 2026-09-24** — 1440×900, 800×600 and 390×844, all three clean.
 
 ## Production release
 
